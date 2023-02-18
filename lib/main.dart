@@ -35,35 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-/* class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      body: LoginScreen(),
-    );
-  }
-
-  Container buildPage(Color color, String text) {
-    return Container(
-      color: color,
-      child: Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 50.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-} */

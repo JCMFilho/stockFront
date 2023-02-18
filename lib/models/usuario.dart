@@ -24,7 +24,7 @@ class UsuarioModel with ChangeNotifier {
       this.celular,
       this.role,
       this.avatar,
-      required this.dataCadastro});
+      this.dataCadastro});
 
   UsuarioModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -37,7 +37,7 @@ class UsuarioModel with ChangeNotifier {
     celular = json['celular'];
     role = json['role'];
     avatar = json['avatar'];
-    dataCadastro = json['data_cadastro'];
+    dataCadastro = json['dataCadastro'];
   }
 
   Map<String, dynamic> toJson() => {
@@ -51,7 +51,7 @@ class UsuarioModel with ChangeNotifier {
         'celular': celular,
         'role': role,
         'avatar': avatar,
-        'data_cadastro': dataCadastro
+        'dataCadastro': dataCadastro
       };
 
   static List<UsuarioModel> usersFromJson(List fullJson) {

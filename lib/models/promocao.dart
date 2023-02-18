@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class PromocaoModel with ChangeNotifier {
   int? id;
   String? imagem;
-  String? departamentoId;
+  int? departamentoId;
   String? tipo;
 
   PromocaoModel(

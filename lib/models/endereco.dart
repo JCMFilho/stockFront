@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class EnderecoModel with ChangeNotifier {
   int? id;
-  String? idUsuario;
+  String? usuarioId;
   String? tipo;
   String? logradouro;
   String? numero;
@@ -13,7 +13,7 @@ class EnderecoModel with ChangeNotifier {
 
   EnderecoModel({
     required this.id,
-    required this.idUsuario,
+    required this.usuarioId,
     required this.tipo,
     required this.logradouro,
     required this.numero,
@@ -25,7 +25,7 @@ class EnderecoModel with ChangeNotifier {
 
   EnderecoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    idUsuario = json['idUsuario'];
+    usuarioId = json['usuarioId'];
     tipo = json['tipo'];
     logradouro = json['logradouro'];
     numero = json['numero'];
@@ -37,7 +37,7 @@ class EnderecoModel with ChangeNotifier {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'idUsuario': idUsuario,
+        'usuarioId': usuarioId,
         'tipo': tipo,
         'logradouro': logradouro,
         'numero': numero,

@@ -16,7 +16,7 @@ class PromocaoService {
       }
       return PromocaoModel.promocoesFromJson(data);
     } catch (error) {
-      log("an error occured while getting product info $error");
+      log("an error occured while getting promocao info $error");
       throw error.toString();
     }
   }

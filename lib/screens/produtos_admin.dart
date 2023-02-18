@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:stock/consts/cores.dart';
 import 'package:stock/models/departamento.dart';
-import 'package:stock/models/endereco.dart';
-import 'package:stock/screens/dados_enderecos.dart';
-import 'package:stock/services/departamento_service.dart';
-import 'package:stock/services/endereco_service.dart';
+import 'package:stock/models/produto.dart';
+import 'package:stock/screens/dados_produtos.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stock/services/departamento_service.dart';
+import 'package:stock/services/produto_service.dart';
 import 'package:stock/widgets/header.dart';
 
-class EnderecosScreen extends StatefulWidget {
-  const EnderecosScreen({Key? key}) : super(key: key);
+class ProdutosAdminScreen extends StatefulWidget {
+  const ProdutosAdminScreen({Key? key}) : super(key: key);
 
   @override
-  State<EnderecosScreen> createState() => _EnderecosScreenState();
+  State<ProdutosAdminScreen> createState() => _ProdutosAdminScreenState();
 }
 
-class _EnderecosScreenState extends State<EnderecosScreen> {
-  List<EnderecoModel> enderecos = [];
+class _ProdutosAdminScreenState extends State<ProdutosAdminScreen> {
+  List<ProdutoModel> produtos = [];
   List<DepartamentoModel> departamentos = [];
   String userId = '';
   String userAvatar = '';
 
   @override
   void initState() {
-    getDepartamentos();
     getUsuario();
+    getDepartamentos();
     super.initState();
   }
 
@@ -38,14 +38,14 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     userId = prefs.getString('id')!;
     userAvatar = prefs.getString('avatar')!;
-    enderecos = await EnderecoService.getEnderecoPorUser(userId);
+    produtos = await ProdutoService.getProdutos(userId);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HeaderWidget.buildAppBar(context, 'Meus endereços', userAvatar),
+      appBar: HeaderWidget.buildAppBar(context, 'Meus produtos', userAvatar),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -61,19 +61,21 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    EnderecoModel endereco = EnderecoModel(
+                    ProdutoModel produto = ProdutoModel(
                         id: null,
-                        usuarioId: null,
-                        tipo: null,
-                        logradouro: null,
-                        numero: null,
-                        bairro: null,
-                        cidade: null,
-                        estado: null,
-                        cep: null);
+                        nome: null,
+                        estoque: null,
+                        descricao: null,
+                        totalAcessos: null,
+                        imagem: null,
+                        preco: null,
+                        departamentoId: null,
+                        departamento: null,
+                        isFavorito: null,
+                        favoritoId: null);
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            DadosEnderecosScreen(endereco: endereco)));
+                            DadosProdutosScreen(produto: produto)));
                   },
                 ),
               )
@@ -81,9 +83,9 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: enderecos.length,
+              itemCount: produtos.length,
               itemBuilder: (context, index) =>
-                  EnderecoCard(endereco: enderecos[index]),
+                  ProdutoCard(produto: produtos[index]),
             ),
           )
         ],
@@ -93,12 +95,13 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
   }
 }
 
-class EnderecoCard extends StatelessWidget {
-  const EnderecoCard({
+class ProdutoCard extends StatelessWidget {
+  const ProdutoCard({
     Key? key,
-    required this.endereco,
+    required this.produto,
   }) : super(key: key);
-  final EnderecoModel endereco;
+
+  final ProdutoModel produto;
 
   @override
   Widget build(BuildContext context) {
@@ -108,48 +111,80 @@ class EnderecoCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(20.0),
-              height: 100,
+              padding: const EdgeInsets.all(10.0),
+              height: 200,
               width: 800,
               decoration: BoxDecoration(
                 color: lightYellow,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Column(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    children: [
-                      Flexible(
-                          child: Text(endereco.tipo ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(' '),
-                      Flexible(
-                          child: Text(endereco.logradouro ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(', '),
-                      Flexible(
-                          child: Text(endereco.numero ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(' - Bairro '),
-                      Flexible(
-                          child: Text(endereco.bairro ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(' - Cidade '),
-                      Flexible(
-                          child: Text(endereco.cidade ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(' - Estado '),
-                      Flexible(
-                          child: Text(endereco.estado ?? '',
-                              overflow: TextOverflow.ellipsis)),
-                      const Text(' - CEP '),
-                      Flexible(
-                          child: Text(endereco.cep ?? '',
-                              overflow: TextOverflow.ellipsis))
-                    ],
+                  Image.network(
+                    produto.imagem!,
+                    width: 200,
+                    height: 100,
                   ),
+                  const SizedBox(width: 5),
+                  SizedBox(
+                      width: 490,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(produto.nome ?? '',
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20.0)),
+                          Row(
+                            children: [
+                              const Text('Departamento: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(produto.departamento ?? '',
+                                  overflow: TextOverflow.ellipsis),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Descrição: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                  width: 420,
+                                  child: Text(
+                                    produto.descricao ?? '',
+                                    maxLines: 4,
+                                    overflow: TextOverflow.ellipsis,
+                                  ))
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('Estoque: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(produto.estoque.toString(),
+                                  overflow: TextOverflow.ellipsis),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text('Preço: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text(
+                                'R\$ ${produto.preco},00',
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          )
+                        ],
+                      )),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       IconButton(
                         icon: const Icon(
@@ -160,7 +195,7 @@ class EnderecoCard extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  DadosEnderecosScreen(endereco: endereco)));
+                                  DadosProdutosScreen(produto: produto)));
                         },
                       ),
                       IconButton(
@@ -183,7 +218,7 @@ class EnderecoCard extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       const Text(
-                                        'Deseja excluir esse endereço?',
+                                        'Deseja excluir esse produto?',
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold),
@@ -197,14 +232,14 @@ class EnderecoCard extends StatelessWidget {
                                               child: const Text('Sim'),
                                               onPressed: () async => {
                                                     resposta =
-                                                        await EnderecoService
-                                                            .deleteEnderecoPorId(
-                                                                endereco.id!),
+                                                        await ProdutoService
+                                                            .deleteProdutoPorId(
+                                                                produto.id!),
                                                     if (resposta)
                                                       Navigator.of(context).push(
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  const EnderecosScreen()))
+                                                                  const ProdutosAdminScreen()))
                                                   }),
                                           const SizedBox(width: 25),
                                           ElevatedButton(
@@ -223,7 +258,7 @@ class EnderecoCard extends StatelessWidget {
                         },
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

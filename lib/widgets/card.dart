@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stock/consts/cores.dart';
+import 'package:stock/models/produto.dart';
+import 'package:stock/screens/produtos.dart';
+import 'package:stock/services/produto_service.dart';
 
 import '../models/promocao.dart';
 
@@ -7,11 +10,13 @@ class CardWidget extends StatelessWidget {
   const CardWidget({
     Key? key,
     required this.promocaoCategories,
+    required this.userId,
     required this.width,
     required this.height,
   }) : super(key: key);
 
   final List<PromocaoModel> promocaoCategories;
+  final String userId;
   final double width;
   final double height;
 
@@ -26,7 +31,15 @@ class CardWidget extends StatelessWidget {
           promocaoCategories.length,
           (index) => ImageCard(
             icon: promocaoCategories[index].imagem,
-            press: () {},
+            press: () async {
+              List<ProdutoModel> produtos =
+                  await ProdutoService.getProdutosPorDepartamento(
+                      promocaoCategories[index].departamentoId ?? 0, userId);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ProdutosScreen(
+                        produtos: produtos,
+                      )));
+            },
             width: width,
             height: height,
           ),

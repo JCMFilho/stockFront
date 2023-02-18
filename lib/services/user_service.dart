@@ -10,13 +10,29 @@ class UserService {
       var uri = Uri.http(baseUrl, "/api/usuario/$id");
       var response = await http.get(uri);
 
-      var data = jsonDecode(response.body);
+      var data = jsonDecode(utf8.decode(response.bodyBytes));
       if (response.statusCode != 200) {
         throw data["message"];
       }
       return UsuarioModel.fromJson(data);
     } catch (error) {
-      log("an error occured while getting product info $error");
+      log("an error occured while getting usuario info $error");
+      throw error.toString();
+    }
+  }
+
+  static Future<UsuarioModel> getUsuarioByEmail(String email) async {
+    try {
+      var uri = Uri.http(baseUrl, "/api/usuario/email/$email");
+      var response = await http.get(uri);
+
+      var data = jsonDecode(utf8.decode(response.bodyBytes));
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+      return UsuarioModel.fromJson(data);
+    } catch (error) {
+      log("an error occured while getting usuario by email info $error");
       throw error.toString();
     }
   }
@@ -34,7 +50,25 @@ class UserService {
       }
       return UsuarioModel.fromJson(data);
     } catch (error) {
-      log("an error occured while getting product info $error");
+      log("an error occured while creating usuario info $error");
+      throw error.toString();
+    }
+  }
+
+  static Future<UsuarioModel> putUsuario(UsuarioModel user) async {
+    try {
+      var uri = Uri.http(baseUrl, "/api/usuario");
+      var response = await http.put(uri,
+          headers: {"Content-Type": "application/json"},
+          body: json.encode(user.toJson()));
+
+      var data = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+      return UsuarioModel.fromJson(data);
+    } catch (error) {
+      log("an error occured while updating usuario info $error");
       throw error.toString();
     }
   }
@@ -52,47 +86,44 @@ class UserService {
       }
       return UsuarioModel.fromJson(data);
     } catch (error) {
-      log("an error occured while getting product info $error");
+      log("an error occured while login user info $error");
       throw error.toString();
     }
   }
 
-/*   static Future<List<ProductsModel>> getAllProducts(
-      {required String limit}) async {
-    List temp = await getData(
-      target: "products",
-      limit: limit,
-    );
-    return ProductsModel.productsFromSnapshot(temp);
-  }
-
-  static Future<List<CategoriesModel>> getAllCategories() async {
-    List temp = await getData(target: "categories");
-    return CategoriesModel.categoriesFromSnapshot(temp);
-  }
-
-  static Future<List<UsersModel>> getAllUsers() async {
-    List temp = await getData(target: "users");
-    return UsersModel.usersFromSnapshot(temp);
-  }
-
-  static Future<ProductsModel> getProductById({required String id}) async {
+  static Future<int> recuperarSenha(String email) async {
     try {
-      var uri = Uri.https(
-        BASE_URL,
-        "api/v1/products/$id",
-      );
-      var response = await http.get(uri);
+      var uri = Uri.http(baseUrl, "/api/usuario/recuperar");
+      var response = await http.post(uri,
+          headers: {"Content-Type": "application/json"},
+          body: json.encode(email));
 
-      // print("response ${jsonDecode(response.body)}");
       var data = jsonDecode(response.body);
       if (response.statusCode != 200) {
         throw data["message"];
       }
-      return ProductsModel.fromJson(data);
+      return data;
     } catch (error) {
-      log("an error occured while getting product info $error");
+      log("an error occured while login user info $error");
       throw error.toString();
     }
-  } */
+  }
+
+  static Future<bool> trocarSenha(LoginModel login) async {
+    try {
+      var uri = Uri.http(baseUrl, "/api/usuario/trocar");
+      var response = await http.post(uri,
+          headers: {"Content-Type": "application/json"},
+          body: json.encode(login.toJson()));
+
+      var data = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+      return data;
+    } catch (error) {
+      log("an error occured while login user info $error");
+      throw error.toString();
+    }
+  }
 }

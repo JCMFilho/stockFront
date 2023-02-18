@@ -7,7 +7,7 @@ import 'package:stock/models/departamento.dart';
 class DepartamentoService {
   static Future<List<DepartamentoModel>> getDepartamentos() async {
     try {
-      var uri = Uri.http(baseUrl, "/api/departamento");
+      var uri = Uri.https(baseUrl, "/api/departamento");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));

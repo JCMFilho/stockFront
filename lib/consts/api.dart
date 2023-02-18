@@ -1,1 +1,1 @@
-const String baseUrl = "https://metraco-api.herokuapp.com";
+const String baseUrl = "metraco-api.herokuapp.com";

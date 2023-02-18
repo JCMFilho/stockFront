@@ -8,7 +8,7 @@ class ProdutoService {
   static Future<List<ProdutoModel>> getProdutos(String? id) async {
     try {
       var uri =
-          Uri.http(baseUrl, "/api/produto/listar-todos", {"idUsuario": id});
+          Uri.https(baseUrl, "/api/produto/listar-todos", {"idUsuario": id});
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -24,7 +24,7 @@ class ProdutoService {
 
   static Future<ProdutoModel> getProduto(String id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/produto/$id");
+      var uri = Uri.https(baseUrl, "/api/produto/$id");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -41,7 +41,7 @@ class ProdutoService {
   static Future<List<ProdutoModel>> getProdutosPorDepartamento(
       int idDepartamento, String? idUsuario) async {
     try {
-      var uri = Uri.http(
+      var uri = Uri.https(
           baseUrl,
           "/api/produto/listar-por-departamento/$idDepartamento",
           {"idUsuario": idUsuario});
@@ -61,7 +61,7 @@ class ProdutoService {
   static Future<List<ProdutoModel>> getProdutosPorNome(
       String nomeProduto, String? idUsuario) async {
     try {
-      var uri = Uri.http(
+      var uri = Uri.https(
           baseUrl, "/api/produto/nome/$nomeProduto", {"idUsuario": idUsuario});
       var response = await http.get(uri);
 
@@ -78,7 +78,7 @@ class ProdutoService {
 
   static Future<ProdutoModel> postProduto(ProdutoModel user) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/produto");
+      var uri = Uri.https(baseUrl, "/api/produto");
       var response = await http.post(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(user.toJson()));
@@ -96,7 +96,7 @@ class ProdutoService {
 
   static Future<bool> deleteProdutoPorId(int id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/produto/$id");
+      var uri = Uri.https(baseUrl, "/api/produto/$id");
       var response = await http.delete(uri);
 
       if (response.statusCode != 204) {

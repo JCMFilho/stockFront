@@ -192,6 +192,7 @@ class LoginScreen extends StatelessWidget {
           label: 'Google',
           callback: () async {
             await signInWithGoogle();
+            return null;
           },
         ),
         LoginProvider(
@@ -199,6 +200,7 @@ class LoginScreen extends StatelessWidget {
           label: 'Facebook',
           callback: () async {
             await signInWithFacebook();
+            return null;
           },
         ),
         LoginProvider(
@@ -206,6 +208,7 @@ class LoginScreen extends StatelessWidget {
           label: 'Twitter',
           callback: () async {
             await signInWithTwitter();
+            return null;
           },
         ),
       ],

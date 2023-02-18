@@ -38,17 +38,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_login: ^4.0.0
   font_awesome_flutter: ^10.2.1
-  firebase_auth: ^3.11.2
-  firebase_core: ^1.24.0
+  firebase_auth: ^4.2.8
+  firebase_core: ^2.6.1
   google_sign_in: ^5.4.2
-  flutter_facebook_auth: ^4.4.1+1
+  flutter_facebook_auth: ^5.0.7
   http: ^0.13.5
   shared_preferences: ^2.0.15
   velocity_x: ^3.6.0
   lottie: ^2.0.0
   dots_indicator: ^2.1.0
   flutter_svg: ^1.1.6
-  badges: ^2.0.3
+  badges: ^3.0.2
   carousel_slider: ^4.1.1
   card_swiper: ^2.0.4
   image_picker: ^0.8.6+1

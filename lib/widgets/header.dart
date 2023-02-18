@@ -51,26 +51,26 @@ class HeaderWidget extends StatelessWidget {
                 child: Image.asset(Images.logo),
               ),
               const Spacer(),
-              Badge(
-                  badgeColor: red,
-                  badgeContent: const Text('2',
+              const Badge(
+                  badgeStyle: BadgeStyle(badgeColor: red),
+                  badgeContent: Text('2',
                       style: TextStyle(
                         color: Colors.white,
                       )),
-                  child: const Icon(
+                  child: Icon(
                     Icons.favorite_border,
                     size: 30,
                   )),
               const SizedBox(width: 30),
-              Badge(
-                  badgeColor: red,
-                  badgeContent: const Text(
+              const Badge(
+                  badgeStyle: BadgeStyle(badgeColor: red),
+                  badgeContent: Text(
                     '3',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.shopping_cart_outlined,
                     size: 30,
                   )),

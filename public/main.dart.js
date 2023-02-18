@@ -23926,7 +23926,7 @@ r=B.b.f5(a,b,r+1)}return null},
 hn(){var s=0,r=A.F(t.v4),q,p=2,o,n,m,l,k,j,i,h
 var $async$hn=A.G(function(a,b){if(a===1){o=b
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/departamento",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/departamento",null)
 s=7
 return A.x(A.qy(n),$async$hn)
 case 7:m=b
@@ -23956,7 +23956,7 @@ a1Y(a){return A.aH9(a)},
 aH9(a){var s=0,r=A.F(t.UA),q,p=2,o,n,m,l,k,j,i,h
 var $async$a1Y=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/endereco/"+a,null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/endereco/"+a,null)
 s=7
 return A.x(A.qy(n),$async$a1Y)
 case 7:m=c
@@ -23986,7 +23986,7 @@ a1Z(a){return A.aHa(a)},
 aHa(a){var s=0,r=A.F(t.io),q,p=2,o,n,m,l,k,j,i,h
 var $async$a1Z=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/endereco",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/endereco",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24019,7 +24019,7 @@ a1X(a){return A.aH8(a)},
 aH8(a){var s=0,r=A.F(t.y),q,p=2,o,n,m,l,k,j,i
 var $async$a1X=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/endereco/"+a,null)
+n=A.eZ("http","metraco-api.herokuapp.com","/api/endereco/"+a,null)
 s=7
 return A.x(A.avC(n),$async$a1X)
 case 7:m=c
@@ -24048,7 +24048,7 @@ a9V(a){return A.aJg(a)},
 aJg(a){var s=0,r=A.F(t.JG),q,p=2,o,n,m,l,k,j,i,h
 var $async$a9V=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/produto/listar-todos",A.an(["idUsuario",a],t.N,t.z))
+n=A.eZ("https","metraco-api.herokuapp.com","/api/produto/listar-todos",A.an(["idUsuario",a],t.N,t.z))
 s=7
 return A.x(A.qy(n),$async$a9V)
 case 7:m=c
@@ -24078,7 +24078,7 @@ M6(a,b){return A.aJh(a,b)},
 aJh(a,b){var s=0,r=A.F(t.JG),q,p=2,o,n,m,l,k,j,i,h
 var $async$M6=A.G(function(c,d){if(c===1){o=d
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/produto/listar-por-departamento/"+a,A.an(["idUsuario",b],t.N,t.z))
+n=A.eZ("https","metraco-api.herokuapp.com","/api/produto/listar-por-departamento/"+a,A.an(["idUsuario",b],t.N,t.z))
 s=7
 return A.x(A.qy(n),$async$M6)
 case 7:m=d
@@ -24108,7 +24108,7 @@ a9W(a,b){return A.aJi(a,b)},
 aJi(a,b){var s=0,r=A.F(t.JG),q,p=2,o,n,m,l,k,j,i,h
 var $async$a9W=A.G(function(c,d){if(c===1){o=d
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/produto/nome/"+a,A.an(["idUsuario",b],t.N,t.z))
+n=A.eZ("https","metraco-api.herokuapp.com","/api/produto/nome/"+a,A.an(["idUsuario",b],t.N,t.z))
 s=7
 return A.x(A.qy(n),$async$a9W)
 case 7:m=d
@@ -24138,7 +24138,7 @@ a9X(a){return A.aJj(a)},
 aJj(a){var s=0,r=A.F(t.XC),q,p=2,o,n,m,l,k,j,i,h
 var $async$a9X=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/produto",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/produto",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24171,7 +24171,7 @@ a9U(a){return A.aJf(a)},
 aJf(a){var s=0,r=A.F(t.y),q,p=2,o,n,m,l,k,j,i
 var $async$a9U=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/produto/"+a,null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/produto/"+a,null)
 s=7
 return A.x(A.avC(n),$async$a9U)
 case 7:m=c
@@ -24200,7 +24200,7 @@ tD(a){return A.aJn(a)},
 aJn(a){var s=0,r=A.F(t.AT),q,p=2,o,n,m,l,k,j,i,h
 var $async$tD=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/promocao/"+a,null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/promocao/"+a,null)
 s=7
 return A.x(A.qy(n),$async$tD)
 case 7:m=c
@@ -24231,7 +24231,7 @@ OR(a){return A.aKO(a)},
 aKO(a){var s=0,r=A.F(t.Bb),q,p=2,o,n,m,l,k,j,i,h
 var $async$OR=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario/"+a,null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario/"+a,null)
 s=7
 return A.x(A.qy(n),$async$OR)
 case 7:m=c
@@ -24261,7 +24261,7 @@ ahc(a){return A.aKP(a)},
 aKP(a){var s=0,r=A.F(t.Bb),q,p=2,o,n,m,l,k,j,i,h
 var $async$ahc=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario/email/"+a,null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario/email/"+a,null)
 s=7
 return A.x(A.qy(n),$async$ahc)
 case 7:m=c
@@ -24291,7 +24291,7 @@ OS(a){return A.aKR(a)},
 aKR(a){var s=0,r=A.F(t.Bb),q,p=2,o,n,m,l,k,j,i,h
 var $async$OS=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24324,7 +24324,7 @@ ahe(a){return A.aKS(a)},
 aKS(a){var s=0,r=A.F(t.Bb),q,p=2,o,n,m,l,k,j,i,h
 var $async$ahe=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24357,7 +24357,7 @@ ahd(a){return A.aKQ(a)},
 aKQ(a){var s=0,r=A.F(t.Bb),q,p=2,o,n,m,l,k,j,i,h
 var $async$ahd=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario/login",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario/login",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24390,7 +24390,7 @@ ahf(a){return A.aKT(a)},
 aKT(a){var s=0,r=A.F(t.S),q,p=2,o,n,m,l,k,j,i,h
 var $async$ahf=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario/recuperar",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario/recuperar",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7
@@ -24422,7 +24422,7 @@ ahg(a){return A.aKU(a)},
 aKU(a){var s=0,r=A.F(t.y),q,p=2,o,n,m,l,k,j,i,h
 var $async$ahg=A.G(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=4
-n=A.eZ("http","https://metraco-api.herokuapp.com","/api/usuario/trocar",null)
+n=A.eZ("https","metraco-api.herokuapp.com","/api/usuario/trocar",null)
 j=t.N
 j=A.an(["Content-Type","application/json"],j,j)
 s=7

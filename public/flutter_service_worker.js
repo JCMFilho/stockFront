@@ -23,8 +23,8 @@ const RESOURCES = {
 "assets/packages/sign_in_button/assets/logos/google_dark.png": "d18b748c2edbc5c4e3bc221a1ec64438",
 "assets/packages/sign_in_button/assets/logos/google_light.png": "f71e2d0b0a2bc7d1d8ab757194a02cac",
 "assets/shaders/ink_sparkle.frag": "ae6c1fd6f6ee6ee952cde379095a8f3f",
-"index.html": "73e163a4e73fdec01bfd095a99e356ef",
-"/": "73e163a4e73fdec01bfd095a99e356ef",
+"index.html": "51bbe7950cd1e002185256de63acb18f",
+"/": "51bbe7950cd1e002185256de63acb18f",
 "main.dart.js": "09635f756a3f11e15cb7f77215eafcd7",
 "manifest.json": "16b14c00579fdaf3cef1af4767a9fb7f",
 "version.json": "d0208866039cb2db4f0b6bf440be87c3"

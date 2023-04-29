@@ -1,28 +1,82 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 
 import 'package:stock/consts/cores.dart';
+import 'package:stock/models/carrinho.dart';
 import 'package:stock/models/produto.dart';
+import 'package:stock/screens/carrinho.dart';
 import 'package:stock/screens/home.dart';
 import 'package:stock/screens/produtos.dart';
 import 'package:stock/screens/user.dart';
 import 'package:stock/screens/login.dart';
 import 'package:stock/consts/imagens.dart';
+import 'package:stock/services/carrinho_service.dart';
 import 'package:stock/services/produto_service.dart';
 import 'package:stock/utils/authentication.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
-    Key? key,
-    required this.size,
-    required this.userId,
-  }) : super(key: key);
+  const HeaderWidget(
+      {Key? key,
+      required this.size,
+      required this.userId,
+      required this.userRole,
+      required this.totalCarrinho,
+      required this.totalFavorito})
+      : super(key: key);
 
   final Size size;
   final String userId;
+  final String userRole;
+  final int totalCarrinho;
+  final int totalFavorito;
 
   @override
   Widget build(BuildContext context) {
+    Widget badgeCarrinho = totalCarrinho != 0 && userRole != 'admin'
+        ? badges.Badge(
+            badgeStyle: const badges.BadgeStyle(badgeColor: red),
+            badgeContent: Text(
+              totalCarrinho.toString(),
+              style: const TextStyle(
+                color: white,
+              ),
+            ),
+            child: IconButton(
+              onPressed: () async {
+                CarrinhoModel carrinho =
+                    await CarrinhoService.getCarrinhoPorUser(userId);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CarrinhoScreen(
+                          carrinho: carrinho,
+                        )));
+              },
+              icon: const Icon(Icons.shopping_cart_outlined, size: 30),
+            ))
+        : const Icon(Icons.shopping_cart_outlined, size: 30);
+
+    Widget badgeFavorito = totalFavorito != 0
+        ? badges.Badge(
+            badgeStyle: const badges.BadgeStyle(badgeColor: red),
+            badgeContent: Text(
+              totalFavorito.toString(),
+              style: const TextStyle(
+                color: white,
+              ),
+            ),
+            child: IconButton(
+              onPressed: () async {
+                List<ProdutoModel> produtos =
+                    await ProdutoService.getProdutosFavoritadosPorUsuario(
+                        userId);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProdutosScreen(
+                          produtos: produtos,
+                        )));
+              },
+              icon: const Icon(Icons.favorite_border, size: 30),
+            ))
+        : const Icon(Icons.favorite_border, size: 30);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 10.0),
       height: size.height * 0.2,
@@ -51,29 +105,9 @@ class HeaderWidget extends StatelessWidget {
                 child: Image.asset(Images.logo),
               ),
               const Spacer(),
-              const Badge(
-                  badgeStyle: BadgeStyle(badgeColor: red),
-                  badgeContent: Text('2',
-                      style: TextStyle(
-                        color: Colors.white,
-                      )),
-                  child: Icon(
-                    Icons.favorite_border,
-                    size: 30,
-                  )),
+              badgeFavorito,
               const SizedBox(width: 30),
-              const Badge(
-                  badgeStyle: BadgeStyle(badgeColor: red),
-                  badgeContent: Text(
-                    '3',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 30,
-                  )),
+              badgeCarrinho,
             ],
           ),
         ),
@@ -87,7 +121,7 @@ class HeaderWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             height: 54,
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: white,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
@@ -161,7 +195,7 @@ class HeaderWidget extends StatelessWidget {
                 value: 0,
                 child: Text('Meus dados',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold)),
               ),
@@ -169,7 +203,7 @@ class HeaderWidget extends StatelessWidget {
                 value: 1,
                 child: Text('Sair',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold)),
               ),
@@ -209,7 +243,7 @@ class HeaderWidget extends StatelessWidget {
           ...departamentos.map((departamento) => ListTile(
                 title: Text(departamento.nome,
                     style: const TextStyle(
-                        color: Colors.white,
+                        color: white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold)),
                 onTap: () async {

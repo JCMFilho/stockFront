@@ -91,7 +91,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                     controller: tipoController,
                     decoration: const InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: white,
                         border: OutlineInputBorder(),
                         hintText: 'Tipo',
                         labelText: 'Tipo',
@@ -107,7 +107,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                     controller: logradouroController,
                     decoration: const InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: white,
                         border: OutlineInputBorder(),
                         hintText: 'Logradouro',
                         labelText: 'Logradouro',
@@ -126,7 +126,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                     ],
                     decoration: const InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: white,
                         border: OutlineInputBorder(),
                         hintText: 'Número',
                         labelText: 'Número',
@@ -143,7 +143,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                   controller: bairroController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Bairro',
                       labelText: 'Bairro',
@@ -156,7 +156,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                   controller: cidadeController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Cidade',
                       labelText: 'Cidade',
@@ -172,7 +172,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                   controller: estadoController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Estado',
                       labelText: 'Estado',
@@ -190,7 +190,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
                   ],
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Cep',
                       labelText: 'Cep',
@@ -207,7 +207,7 @@ class _DadosEnderecosScreenState extends State<DadosEnderecosScreen> {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: blue,
-              foregroundColor: Colors.white,
+              foregroundColor: white,
               padding: const EdgeInsets.all(16.0),
               textStyle: const TextStyle(fontSize: 20),
             ),

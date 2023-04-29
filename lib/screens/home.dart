@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stock/models/carrinho.dart';
 import 'package:stock/models/departamento.dart';
+import 'package:stock/models/produto.dart';
+import 'package:stock/services/carrinho_service.dart';
 import 'package:stock/services/departamento_service.dart';
+import 'package:stock/services/produto_service.dart';
 
 import 'package:stock/widgets/card.dart';
 import 'package:stock/widgets/header.dart';
@@ -23,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   List<PromocaoModel> promocaoRotative = [];
   List<DepartamentoModel> departamentos = [];
   String userId = '';
+  String userRole = '';
   String userAvatar = '';
+  int totalCarrinho = 0;
+  int totalFavorito = 0;
 
   @override
   void initState() {
@@ -42,6 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     userId = prefs.getString('id')!;
     userAvatar = prefs.getString('avatar')!;
+    userRole = prefs.getString('role')!;
+    List<ProdutoModel> produtos =
+        await ProdutoService.getProdutosFavoritadosPorUsuario(userId);
+    totalFavorito = produtos.length;
+    CarrinhoModel carrinho = await CarrinhoService.getCarrinhoPorUser(userId);
+    totalCarrinho = carrinho.total!;
     setState(() {});
   }
 
@@ -61,7 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderWidget(size: size, userId: userId),
+              HeaderWidget(
+                  size: size,
+                  userId: userId,
+                  userRole: userRole,
+                  totalCarrinho: totalCarrinho,
+                  totalFavorito: totalFavorito),
               SwiperWidget(
                 size: size,
                 promocao: promocaoRotative,

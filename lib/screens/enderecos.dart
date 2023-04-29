@@ -58,7 +58,7 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
                   icon: const Icon(
                     Icons.add_box_outlined,
                     size: 40,
-                    color: Colors.white,
+                    color: white,
                   ),
                   onPressed: () {
                     EnderecoModel endereco = EnderecoModel(
@@ -70,7 +70,8 @@ class _EnderecosScreenState extends State<EnderecosScreen> {
                         bairro: null,
                         cidade: null,
                         estado: null,
-                        cep: null);
+                        cep: null,
+                        enderecoPrincipal: null);
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
                             DadosEnderecosScreen(endereco: endereco)));
@@ -151,11 +152,75 @@ class EnderecoCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      Visibility(
+                        visible: endereco.enderecoPrincipal == false,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.home,
+                            size: 30,
+                            color: black,
+                          ),
+                          onPressed: () {
+                            showModalBottomSheet<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                bool resposta;
+                                return Container(
+                                  height: 200,
+                                  color: lightYellow,
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        const Text(
+                                          'Deseja tornar esse endereço principal?',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(height: 25),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ElevatedButton(
+                                                child: const Text('Sim'),
+                                                onPressed: () async => {
+                                                      resposta =
+                                                          await EnderecoService
+                                                              .putEndereco(
+                                                                  endereco.id!),
+                                                      if (resposta)
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        const EnderecosScreen()))
+                                                    }),
+                                            const SizedBox(width: 25),
+                                            ElevatedButton(
+                                              child: const Text('Não'),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
                       IconButton(
                         icon: const Icon(
                           Icons.edit_outlined,
                           size: 30,
-                          color: Colors.black,
+                          color: black,
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -167,7 +232,7 @@ class EnderecoCard extends StatelessWidget {
                         icon: const Icon(
                           Icons.delete_outlined,
                           size: 30,
-                          color: Colors.black,
+                          color: black,
                         ),
                         onPressed: () {
                           showModalBottomSheet<void>(

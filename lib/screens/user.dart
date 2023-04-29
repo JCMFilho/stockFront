@@ -131,7 +131,7 @@ class _UserScreenState extends State<UserScreen> {
             title,
             textAlign: TextAlign.start,
             style: const TextStyle(
-              color: Colors.white,
+              color: white,
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
             ),

@@ -58,7 +58,7 @@ class _ProdutosAdminScreenState extends State<ProdutosAdminScreen> {
                   icon: const Icon(
                     Icons.add_box_outlined,
                     size: 40,
-                    color: Colors.white,
+                    color: white,
                   ),
                   onPressed: () {
                     ProdutoModel produto = ProdutoModel(
@@ -190,7 +190,7 @@ class ProdutoCard extends StatelessWidget {
                         icon: const Icon(
                           Icons.edit_outlined,
                           size: 30,
-                          color: Colors.black,
+                          color: black,
                         ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -202,7 +202,7 @@ class ProdutoCard extends StatelessWidget {
                         icon: const Icon(
                           Icons.delete_outlined,
                           size: 30,
-                          color: Colors.black,
+                          color: black,
                         ),
                         onPressed: () {
                           showModalBottomSheet<void>(

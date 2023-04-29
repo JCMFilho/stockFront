@@ -93,7 +93,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   ],
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'CPF',
                       labelText: 'CPF',
@@ -111,7 +111,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   controller: rgController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'RG',
                       labelText: 'RG',
@@ -124,7 +124,7 @@ class _DadosScreenState extends State<DadosScreen> {
               controller: nomeController,
               decoration: const InputDecoration(
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: white,
                   border: OutlineInputBorder(),
                   hintText: 'Insira nome completo',
                   labelText: 'Nome',
@@ -134,7 +134,7 @@ class _DadosScreenState extends State<DadosScreen> {
             enabled: false,
             decoration: const InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: white,
                 border: OutlineInputBorder(),
                 hintText: 'Insira email',
                 labelText: 'Email',
@@ -152,7 +152,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   ],
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Insira o celular',
                       labelText: 'Celular',
@@ -170,7 +170,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   controller: telefoneController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Insira o telefone',
                       labelText: 'Telefone',
@@ -186,7 +186,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   controller: senhaController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Insira sua senha',
                       labelText: 'Senha',
@@ -205,7 +205,7 @@ class _DadosScreenState extends State<DadosScreen> {
                   },
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Confirme sua senha',
                       labelText: 'Confirmação de senha',
@@ -222,7 +222,7 @@ class _DadosScreenState extends State<DadosScreen> {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: blue,
-              foregroundColor: Colors.white,
+              foregroundColor: white,
               padding: const EdgeInsets.all(16.0),
               textStyle: const TextStyle(fontSize: 20),
             ),

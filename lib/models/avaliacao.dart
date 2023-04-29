@@ -1,28 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:stock/models/usuario.dart';
 
 class AvaliacaoModel with ChangeNotifier {
-  String? id;
+  int? id;
   String? data;
   String? descricao;
   int? nota;
-  String? idUsuario;
-  int? idProduto;
+  UsuarioModel? idUsuario;
 
   AvaliacaoModel(
       {required this.id,
       required this.data,
       required this.descricao,
       required this.nota,
-      required this.idUsuario,
-      required this.idProduto});
+      required this.idUsuario});
 
   AvaliacaoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     data = json['data'];
     descricao = json['descricao'];
     nota = json['nota'];
-    idUsuario = json['idUsuario'];
-    idProduto = json['idProduto'];
+    idUsuario = UsuarioModel.fromJson(json['idUsuario']);
   }
 
   Map<String, dynamic> toJson() => {
@@ -30,8 +28,7 @@ class AvaliacaoModel with ChangeNotifier {
         'data': data,
         'descricao': descricao,
         'nota': nota,
-        'idUsuario': idUsuario,
-        'idProduto': idProduto
+        'idUsuario': idUsuario
       };
 
   static List<AvaliacaoModel> avaliacoesFromJson(List fullJson) {

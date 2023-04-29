@@ -10,18 +10,19 @@ class EnderecoModel with ChangeNotifier {
   String? cidade;
   String? estado;
   String? cep;
+  bool? enderecoPrincipal;
 
-  EnderecoModel({
-    required this.id,
-    required this.usuarioId,
-    required this.tipo,
-    required this.logradouro,
-    required this.numero,
-    required this.bairro,
-    required this.cidade,
-    required this.estado,
-    required this.cep,
-  });
+  EnderecoModel(
+      {required this.id,
+      required this.usuarioId,
+      required this.tipo,
+      required this.logradouro,
+      required this.numero,
+      required this.bairro,
+      required this.cidade,
+      required this.estado,
+      required this.cep,
+      required this.enderecoPrincipal});
 
   EnderecoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -33,6 +34,7 @@ class EnderecoModel with ChangeNotifier {
     cidade = json['cidade'];
     estado = json['estado'];
     cep = json['cep'];
+    enderecoPrincipal = json['enderecoPrincipal'];
   }
 
   Map<String, dynamic> toJson() => {
@@ -44,7 +46,8 @@ class EnderecoModel with ChangeNotifier {
         'bairro': bairro,
         'cidade': cidade,
         'estado': estado,
-        'cep': cep
+        'cep': cep,
+        'enderecoPrincipal': enderecoPrincipal
       };
 
   static List<EnderecoModel> enderecosFromJson(List fullJson) {

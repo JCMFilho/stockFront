@@ -110,14 +110,14 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                     ),
                     child: const Text('Nenhuma imagem selecionada',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)))
+                            fontWeight: FontWeight.bold, color: white)))
                 : Image.network(produto.imagem),
           ),
           const SizedBox(height: 5),
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: blue,
-              foregroundColor: Colors.white,
+              foregroundColor: white,
               padding: const EdgeInsets.all(16.0),
               textStyle: const TextStyle(fontSize: 15),
             ),
@@ -135,7 +135,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                   controller: nomeController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Nome',
                       labelText: 'Nome',
@@ -151,7 +151,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                   controller: departamentoController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Departamento',
                       labelText: 'Departamento',
@@ -170,7 +170,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                   ],
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: white,
                       border: OutlineInputBorder(),
                       hintText: 'Estoque',
                       labelText: 'Estoque',
@@ -189,7 +189,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                 ],
                 decoration: const InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: white,
                     border: OutlineInputBorder(),
                     hintText: 'Preço',
                     labelText: 'Preço',
@@ -207,7 +207,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: white,
                     border: OutlineInputBorder(),
                     hintText: 'Descricao',
                     labelText: 'Descricao',
@@ -223,7 +223,7 @@ class _DadosProdutosScreenState extends State<DadosProdutosScreen> {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: blue,
-              foregroundColor: Colors.white,
+              foregroundColor: white,
               padding: const EdgeInsets.all(16.0),
               textStyle: const TextStyle(fontSize: 20),
             ),

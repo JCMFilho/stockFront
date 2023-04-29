@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:stock/consts/cores.dart';
 import 'package:stock/models/promocao.dart';
 
 class SwiperWidget extends StatelessWidget {
@@ -26,8 +27,8 @@ class SwiperWidget extends StatelessWidget {
         autoplay: true,
         pagination: const SwiperPagination(
             alignment: Alignment.bottomCenter,
-            builder: DotSwiperPaginationBuilder(
-                color: Colors.white, activeColor: Colors.red)),
+            builder:
+                DotSwiperPaginationBuilder(color: white, activeColor: red)),
       ),
     );
   }

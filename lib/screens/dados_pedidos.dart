@@ -47,12 +47,12 @@ class _DadosPedidosScreenState extends State<DadosPedidosScreen> {
     return Scaffold(
       appBar: HeaderWidget.buildAppBar(context, 'Meus pedidos', userAvatar),
       body: Container(
-          padding: const EdgeInsets.only(top: 50, right: 100, left: 100),
-          child: Expanded(
-              child: ListView.builder(
-            itemCount: pedidos.length,
-            itemBuilder: (context, index) => PedidoCard(pedido: pedidos[index]),
-          ))),
+        padding: const EdgeInsets.only(top: 50, right: 100, left: 100),
+        child: ListView.builder(
+          itemCount: pedidos.length,
+          itemBuilder: (context, index) => PedidoCard(pedido: pedidos[index]),
+        ),
+      ),
       drawer: HeaderWidget.buildDrawer(context, userId, departamentos),
     );
   }

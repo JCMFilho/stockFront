@@ -7,7 +7,7 @@ import 'package:stock/models/estatistica.dart';
 class EstatisticaService {
   static Future<EstatisticaModel> getEstatistica() async {
     try {
-      var uri = Uri.http(baseUrl, "/api/estatistica");
+      var uri = Uri.https(baseUrl, "/api/estatistica");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));

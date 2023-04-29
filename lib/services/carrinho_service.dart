@@ -8,7 +8,7 @@ import 'package:stock/models/produto_carrinho.dart';
 class CarrinhoService {
   static Future<CarrinhoModel> getCarrinhoPorUser(String id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/carrinho/$id");
+      var uri = Uri.https(baseUrl, "/api/carrinho/$id");
       var response = await http.get(uri);
 
       if (response.bodyBytes.isEmpty) {
@@ -31,7 +31,7 @@ class CarrinhoService {
   static Future<CarrinhoModel> postCarrinho(
       ProdutoCarrinhoModel produtoCarrinho) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/carrinho");
+      var uri = Uri.https(baseUrl, "/api/carrinho");
       var response = await http.post(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(produtoCarrinho.toJson()));
@@ -49,7 +49,7 @@ class CarrinhoService {
 
   static Future<void> putCarrinho(ProdutoCarrinhoModel produtoCarrinho) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/carrinho");
+      var uri = Uri.https(baseUrl, "/api/carrinho");
       var response = await http.put(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(produtoCarrinho.toJson()));
@@ -67,7 +67,7 @@ class CarrinhoService {
   static Future<void> deleteCarrinho(
       ProdutoCarrinhoModel produtoCarrinho) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/carrinho/${produtoCarrinho.id}");
+      var uri = Uri.https(baseUrl, "/api/carrinho/${produtoCarrinho.id}");
       var response = await http.delete(uri);
 
       if (response.statusCode != 204) {

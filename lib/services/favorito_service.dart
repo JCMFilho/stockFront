@@ -7,7 +7,7 @@ import 'package:stock/models/favorito.dart';
 class FavoritoService {
   static Future<FavoritoRetornoModel> postFavorito(FavoritoModel pedido) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/favorito");
+      var uri = Uri.https(baseUrl, "/api/favorito");
       var response = await http.post(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(pedido.toJson()));
@@ -25,7 +25,7 @@ class FavoritoService {
 
   static Future<bool> deleteFavoritoPorId(int id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/favorito/$id");
+      var uri = Uri.https(baseUrl, "/api/favorito/$id");
       var response = await http.delete(uri);
 
       if (response.statusCode != 204) {

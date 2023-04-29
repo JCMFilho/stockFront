@@ -7,7 +7,7 @@ import 'package:stock/models/pedido.dart';
 class PedidoService {
   static Future<List<PedidoModel>> getPedidoPorUser(String id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/pedido/$id");
+      var uri = Uri.https(baseUrl, "/api/pedido/$id");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -23,7 +23,7 @@ class PedidoService {
 
   static Future<PedidoModel> postPedido(PedidoPostModel pedido) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/pedido");
+      var uri = Uri.https(baseUrl, "/api/pedido");
       var response = await http.post(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(pedido.toJson()));
@@ -41,7 +41,7 @@ class PedidoService {
 
   static Future<void> putPedido(PedidoPutModel pedido) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/pedido");
+      var uri = Uri.https(baseUrl, "/api/pedido");
       var response = await http.put(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(pedido.toJson()));

@@ -7,7 +7,7 @@ import 'package:stock/models/promocao.dart';
 class PromocaoService {
   static Future<List<PromocaoModel>> getData(String tipo) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/promocao/$tipo");
+      var uri = Uri.https(baseUrl, "/api/promocao/$tipo");
       var response = await http.get(uri);
 
       var data = jsonDecode(response.body);

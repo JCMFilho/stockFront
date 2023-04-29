@@ -7,7 +7,7 @@ import 'package:stock/models/endereco.dart';
 class EnderecoService {
   static Future<EnderecoModel> getEnderecoPrincipalPorUser(String id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/endereco/endereco-principal/$id");
+      var uri = Uri.https(baseUrl, "/api/endereco/endereco-principal/$id");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -23,7 +23,7 @@ class EnderecoService {
 
   static Future<List<EnderecoModel>> getEnderecoPorUser(String id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/endereco/$id");
+      var uri = Uri.https(baseUrl, "/api/endereco/$id");
       var response = await http.get(uri);
 
       var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -39,7 +39,7 @@ class EnderecoService {
 
   static Future<EnderecoModel> postEndereco(EnderecoModel endereco) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/endereco");
+      var uri = Uri.https(baseUrl, "/api/endereco");
       var response = await http.post(uri,
           headers: {"Content-Type": "application/json"},
           body: json.encode(endereco.toJson()));
@@ -57,7 +57,7 @@ class EnderecoService {
 
   static Future<bool> putEndereco(int id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/endereco/$id");
+      var uri = Uri.https(baseUrl, "/api/endereco/$id");
       var response = await http.put(uri);
 
       if (response.statusCode != 204) {
@@ -72,7 +72,7 @@ class EnderecoService {
 
   static Future<bool> deleteEnderecoPorId(int id) async {
     try {
-      var uri = Uri.http(baseUrl, "/api/endereco/$id");
+      var uri = Uri.https(baseUrl, "/api/endereco/$id");
       var response = await http.delete(uri);
 
       if (response.statusCode != 204) {
